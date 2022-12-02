@@ -43,6 +43,7 @@ Worker::Worker()
     name = "Nameless worker";
     age = 14;
     cargo = 10;
+    location = "City";
 }
 
 Worker::Worker(std::string name, int age, int cargo)
@@ -50,6 +51,7 @@ Worker::Worker(std::string name, int age, int cargo)
     this->name = name;
     this->age = age;
     this->cargo = cargo;
+    location = "City";
 }
 
 Worker::~Worker() {}
