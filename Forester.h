@@ -29,6 +29,7 @@ public:
 Forester::Forester() : Worker()
 {
     setName("Nameless forester");
+    addNewTool();
 }
 
 Forester::Forester(std::string name, int age, int cargo)
@@ -89,7 +90,7 @@ void Forester::removeTool(int index)
 
 void Forester::addNewTool()
 {
-    Axe* axe = new Axe("Axe", 100, 10);
+    Axe* axe = new Axe("Axe", 5, 10);
     tools.push_back(*axe);
     std::cout<<YELLOW<<"-> "<<getName()<<" created a new "<<axe->getName()<<std::endl;
 }

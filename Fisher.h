@@ -90,7 +90,7 @@ void Fisher::removeTool(int index)
 
 void Fisher::addNewTool()
 {
-    Rod* rod = new Rod("Rod", 100, 10);
+    Rod* rod = new Rod("Rod", 3, 10);
     tools.push_back(*rod);
     std::cout<<YELLOW<<"-> Fisher created a new "<<rod->getName()<<std::endl;
 }

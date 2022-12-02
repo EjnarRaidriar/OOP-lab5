@@ -89,7 +89,7 @@ void Miner::removeTool(int index)
 
 void Miner::addNewTool()
 {
-    Pickaxe* pickaxe = new Pickaxe("Pickaxe", 100, 10);
+    Pickaxe* pickaxe = new Pickaxe("Pickaxe", 5, 10);
     tools.push_back(*pickaxe);
     std::cout<<YELLOW<<"-> "<<getName()<<" created a new "<<pickaxe->getName()<<std::endl;
 }
