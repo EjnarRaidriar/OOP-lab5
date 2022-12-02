@@ -17,25 +17,18 @@ public:
 };
 
 Mineral::Mineral() : Resource("Mineral", 100)
-{
-    std::cout<<MAGENTA<<"-> Mineral default constructor called!"<<std::endl;
-}
+{}
 
 Mineral::Mineral(std::string name, int durability) : Resource(name, durability)
-{
-    std::cout<<MAGENTA<<"-> Mineral custom constructor called!"<<std::endl;
-}
+{}
 
 Mineral::Mineral(Resource &mineral) : Resource(mineral.getName(), mineral.getDurability()) {}
 
 Mineral::~Mineral()
-{
-    std::cout<<MAGENTA<<"-> Mineral destructor called!"<<std::endl;
-}
+{}
 
 //Methods
 void Mineral::makeAbstarct()
-{
-}
+{}
 
 #endif

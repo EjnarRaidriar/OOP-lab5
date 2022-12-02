@@ -16,19 +16,14 @@ public:
 Axe::Axe() : Tool()
 {
     setName("Axe");
-    std::cout<<MAGENTA<<"-> Axe default constructor called!"<<std::endl;
 }
 
 Axe::Axe(std::string name, int durability, int efficiency) 
     : Tool(name, durability, efficiency)
-{
-    std::cout<<MAGENTA<<"-> Axe custom constructor called!"<<std::endl;
-}
+{}
 
 Axe::~Axe()
-{
-    std::cout<<MAGENTA<<"-> Axe destructor called!"<<std::endl;
-}
+{}
 
 //Methods
 void Axe::Sharpen(Mineral &mineral)

@@ -15,20 +15,14 @@ public:
 
 Rod::Rod() : Tool()
 {
-    setName("Rod");
-    std::cout<<MAGENTA<<"-> Rod default constructor called!"<<std::endl;
-}
+    setName("Rod");}
 
 Rod::Rod(std::string name, int durability, int efficiency) 
     : Tool(name, durability, efficiency)
-{
-    std::cout<<MAGENTA<<"-> Rod custom constructor called!"<<std::endl;
-}
+{}
 
 Rod::~Rod()
-{
-    std::cout<<MAGENTA<<"-> Rod destructor called!"<<std::endl;
-}
+{}
 
 //Methods
 void Rod::Sharpen(Mineral &mineral)

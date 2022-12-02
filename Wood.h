@@ -21,14 +21,9 @@ Wood::Wood(std::string name, int durability) : Resource(name, durability) {}
 
 Wood::Wood(Resource &wood) : Resource(wood.getName(), wood.getDurability()) {}
 
-Wood::~Wood()
-{
-    std::cout<<MAGENTA<<"-> Wood destructor called!"<<std::endl;
-}
+Wood::~Wood() {}
 
 //Methods
-void Wood::makeAbstarct()
-{
-}
+void Wood::makeAbstarct() {}
 
 #endif

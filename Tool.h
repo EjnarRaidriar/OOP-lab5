@@ -40,23 +40,17 @@ Tool::Tool()
     name = "Tool";
     durability = 5;
     efficiency = 10;
-    hits = 0;
-    std::cout<<MAGENTA<<"-> Tool default constructor called!"<<std::endl;
-}
+    hits = 0;}
 
 Tool::Tool(std::string name, int durability, int efficiency)
 {
     this->name = name;
     this->durability = durability;
     this->efficiency = efficiency;
-    this->hits = 0;
-    std::cout<<MAGENTA<<"-> Tool custom construnctor"<<std::endl;
-}
+    this->hits = 0;}
 
 Tool::~Tool()
-{
-    std::cout<<MAGENTA<<"-> Tool destructor called!"<<std::endl;
-}
+{}
 
 //Getters and Setters
 void Tool::setName(std::string name)

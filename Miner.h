@@ -29,19 +29,14 @@ public:
 Miner::Miner() : Worker()
 {
     setName("Nameless Miner");
-    std::cout<<MAGENTA<<"-> Miner default constructor called!"<<std::endl;
 }
 
 Miner::Miner(std::string name, int age, int cargo)
     : Worker(name, age, cargo)
-{
-    std::cout<<MAGENTA<<"-> Miner custom constructor called!"<<std::endl;
-}
+{}
 
 Miner::~Miner()
-{
-    std::cout<<MAGENTA<<"-> Miner destructor called!"<<std::endl;
-}
+{}
 
 //Getters
 int Miner::getToolAmount() const

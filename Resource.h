@@ -31,9 +31,7 @@ Resource::Resource(std::string name, int durability)
 Resource::Resource() {}
 
 Resource::~Resource()
-{
-    std::cout<<MAGENTA<<"-> Resource destructor called!"<<std::endl;
-}
+{}
 //Getters and Setters
 void Resource::setName(std::string name)
 {

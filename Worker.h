@@ -43,7 +43,6 @@ Worker::Worker()
     name = "Nameless worker";
     age = 14;
     cargo = 10;
-    std::cout<<"-> Worker default constructor called!"<<std::endl;
 }
 
 Worker::Worker(std::string name, int age, int cargo)
@@ -51,13 +50,9 @@ Worker::Worker(std::string name, int age, int cargo)
     this->name = name;
     this->age = age;
     this->cargo = cargo;
-    std::cout<<"-> Worker custom constructor called!"<<std::endl;
 }
 
-Worker::~Worker()
-{
-    std::cout<<"-> Worker destructor called!"<<std::endl;
-}
+Worker::~Worker() {}
 
 std::string Worker::getName()
 {

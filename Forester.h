@@ -29,19 +29,14 @@ public:
 Forester::Forester() : Worker()
 {
     setName("Nameless forester");
-    std::cout<<MAGENTA<<"-> Forester default constructor called!"<<MAGENTA<<std::endl;
 }
 
 Forester::Forester(std::string name, int age, int cargo)
     : Worker(name, age, cargo)
-{
-    std::cout<<MAGENTA<<"-> Forester custom constructor called!"<<MAGENTA<<std::endl;
-}
+{}
 
 Forester::~Forester()
-{
-    std::cout<<MAGENTA<<"-> Forester destructor called!"<<MAGENTA<<std::endl;
-}
+{}
 
 //Getters
 int Forester::getToolAmount() const

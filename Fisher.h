@@ -29,19 +29,14 @@ public:
 Fisher::Fisher() : Worker()
 {
     setName("Nameless Fisher");
-    std::cout<<MAGENTA<<"-> Fisher default constructor called!"<<std::endl;
 }
 
 Fisher::Fisher(std::string name, int age, int cargo)
     : Worker(name, age, cargo)
-{
-    std::cout<<MAGENTA<<"-> Fisher custom constructor called!"<<std::endl;
-}
+{}
 
 Fisher::~Fisher()
-{
-    std::cout<<MAGENTA<<"-> Fisher destructor called!"<<std::endl;
-}
+{}
 
 //Getters
 int Fisher::getToolAmount() const

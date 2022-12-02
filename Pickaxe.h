@@ -16,19 +16,14 @@ public:
 Pickaxe::Pickaxe() : Tool()
 {
     setName("Pickaxe");
-    std::cout<<MAGENTA<<"-> Pickaxe default constructor called!"<<std::endl;
 }
 
 Pickaxe::Pickaxe(std::string name, int durability, int efficiency) 
     : Tool(name, durability, efficiency)
-{
-    std::cout<<MAGENTA<<"-> Pickaxe custom constructor called!"<<std::endl;
-}
+{}
 
 Pickaxe::~Pickaxe()
-{
-    std::cout<<MAGENTA<<"-> Pickaxe destructor called!"<<std::endl;
-}
+{}
 
 //Methods
 void Pickaxe::Sharpen(Mineral &mineral)
