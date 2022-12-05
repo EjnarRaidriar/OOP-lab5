@@ -1,4 +1,3 @@
-
 #include"Miner.hpp"
 
 Miner::Miner() : Worker()
@@ -11,46 +10,59 @@ Miner::Miner(std::string name, int age, int cargo)
 
 Miner::~Miner() {}
 
-//Methods
-bool Miner::collectResource(Resource* resource)
+//Getters
+std::string Miner::className() const
 {
-    if (resource == NULL)
+    return "Miner";
+}
+
+//Methods
+void Miner::createTool()
+{
+    int w_index = -1;
+    int i_index = -1;
+    for (int i = 0; i < resources.size(); i++)
     {
-        std::cout<<RED<<"-> No resource to collect!"<<std::endl;
-        return false;
-    }
-    if (resources.size() < getCargo())
-    {
-        if (resource->getDurability() <= getTool()->getEfficiency()) {
-                getTool()->Hit();
-                resources.push_back(resource);
-                //Resource* mineral = new Mineral(*resource);
-                //resources.push_back(mineral);
-                std::cout<<GREEN<<"-> "<<getName()<<" collected "<<resource->getName()<<std::endl;
-                return true;
-            } else {
-                resource->setDurability(resource->getDurability() - getTool()->getEfficiency());
-                getTool()->Hit();
-                std::cout<<RESET<<"-> "<<getName()<<" strikes "<<resource->getName()<<std::endl;
-                std::cout<<"   Resource durability: "<<resource->getDurability()<<std::endl;
-                std::cout<<"   Tool efficiency: "<<getTool()->getEfficiency()<<std::endl;
-                return false;
+        if (resources[i]->className() == "Iron")
+        {
+            i_index = i;
+        }
+        if (resources[i]->className() == "Wood")
+        {
+            w_index = i;
         }
     }
-    else
+    if (i_index != -1 && w_index != -1)
     {
-        std::cout<<RED<<"-> Miner "<<getName()<<"'s cargo is full\n   He can't collect more resources!"<<std::endl;
-        return false;
+        Tool* pickaxe = new Pickaxe("Pickaxe", 5, 10);
+        addTool(pickaxe);
+        resources.erase(resources.begin() + i_index);
+        resources.erase(resources.begin() + w_index);
+    }
+    else if (i_index == -1)
+    {
+        std::cout<<RED<<"-> Not enough iron to create an axe"<<std::endl;
+    }
+    else if (w_index == -1)
+    {
+        std::cout<<RED<<"-> Not enough wood to create an axe"<<std::endl;
     }
 }
 
-void Miner::createTool(Mineral &mineral, )
+void Miner::Sharpen(Tool* tool)
 {
-    Pickaxe* pickaxe = new Pickaxe("Pickaxe", 5, 10);
-    addTool(pickaxe);
-    std::cout<<YELLOW<<"-> "<<getName()<<" created a new "<<pickaxe->getName()<<std::endl;
-    mineral.~Mineral();
+    int iron = -1;
+    for (int i = 0; i < resources.size(); i++)
+    if (resources[i]->className() == "Iron")
+        iron = i;
+    if (iron != -1)
+    {
+        std::cout<<GREEN<<"-> "<<getName()<<" sharpened his "<<tool->getName()<<std::endl;
+        tool->setEfficiency(10);
+        resources.erase(resources.begin() + iron);
+    }
 }
+
 //Output Methods
 void Miner::printData()
 {

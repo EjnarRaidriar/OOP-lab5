@@ -13,10 +13,10 @@ public:
     //Getters
     virtual std::string className() const override;
     //Methods
-    bool collectResource(Resource* resource) override;
-    void createTool(Iron &iron, Wood &wood) override;
+    virtual void createTool() override;
+    virtual void Sharpen(Tool* tool) override; //needs to have iron to work
     //Output Methods
-    void printData();
+    virtual void printData() override;
 };
 
 #endif
