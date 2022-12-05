@@ -29,6 +29,7 @@ public:
     int getHits();
     //Methods
     virtual std::string className() const = 0;
+    bool checkBroken(); //return true if broken
     //Output Methods
     void printData() const;
 };

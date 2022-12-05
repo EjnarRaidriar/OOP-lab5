@@ -59,6 +59,26 @@ int Tool::getHits()
     return this->hits;
 }
 
+//Methods
+bool Tool::checkBroken()
+{
+    hits++;
+    if (hits > durability)
+    {
+        efficiency--;
+        hits = 0;
+        return false;
+    }
+    if (efficiency <= 0)
+    {
+        durability--;
+        return false;
+    }
+    if (durability <= 0)
+    {
+        return true;
+    }
+}
 
 //Output Methods
 void Tool::printData() const

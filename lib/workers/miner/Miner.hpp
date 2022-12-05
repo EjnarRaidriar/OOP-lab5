@@ -3,6 +3,7 @@
 #include"../workers/Worker.hpp"
 #include"../pickaxe/Pickaxe.hpp"
 #include"../resources/iron/Iron.hpp"
+#include"../IronToolUser.hpp"
 class Miner : public Worker, public IronToolUser
 {
 public:

@@ -76,3 +76,19 @@
     - for the funciton *collectResources()* I added different implementation for each subclass of Worker depending on their specialization and the tool used
 
     ![fdsa](.photos/Screenshot%202022-12-02%20154535.png)
+
+    - Created a new interface for iron tool users
+
+    ![a](.photos/IronToolUser%20interface.png)
+
+    - moved output data from subclasses to parent class in order to avoid repetition
+
+    ![a](.photos/worker%20data%20output.png)
+
+    - deleted tools vector from each subclass and moved to parent class
+
+    ![a](.photos/tools%20vector.png)
+
+    ![a](.photos/worker%20data.png)
+
+    now each worker can store different tools and resources, but the *collectResources()* function will determine their efficiency with each tool and resource

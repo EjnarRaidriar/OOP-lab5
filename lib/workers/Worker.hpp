@@ -5,7 +5,7 @@
 #include"../tools/Tool.hpp"
 #include<iostream>
 #include<vector>
-#include<typeinfo>
+#include<memory>
 
 class Worker
 {
@@ -14,10 +14,10 @@ private:
     int age;
     unsigned int cargo;
     std::string location;
-    std::vector<Tool*> tools;
 
 protected:
-    std::vector<Resource*> resources;
+    std::vector<std::unique_ptr<Resource>> resources;
+    std::vector<std::unique_ptr<Tool>> tools;
 
 public:
     Worker();
@@ -34,6 +34,7 @@ public:
     std::string getLocation();
     void setLocation(std::string location);
     Resource* getResource();
+    void addResource(Resource* resource);
     int getResourceAmount();
     void removeResource();
     Tool* getTool();
@@ -42,14 +43,14 @@ public:
     virtual std::string className() const = 0;
 
     //Methods
-    virtual bool collectResource(Resource* resource) = 0;
+    bool Hit(Resource* resource);
+    bool collectResource(Resource* resource);
     void removeTool(int index);
-    void Hit(Tool* tool);
 
     //Output Methods
+    virtual void printData() = 0;
     void printResources() const;
     void printTools() const;
-    void printData() const;
 };
 
 #endif

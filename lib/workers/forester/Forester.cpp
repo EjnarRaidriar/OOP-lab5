@@ -3,97 +3,45 @@
 Forester::Forester() : Worker()
 {
     setName("Nameless forester");
-    addNewTool();
+    Tool* axe = new Axe("Axe", 5, 10);
+    addTool(axe);
 }
 
 Forester::Forester(std::string name, int age, int cargo)
-    : Worker(name, age, cargo)
-{}
+    : Worker(name, age, cargo) {}
 
-Forester::~Forester()
-{}
+Forester::~Forester() {}
 
-//Getters
-int Forester::getToolAmount() const
-{
-    return tools.size();
-}
 //Methods
-bool Forester::collectResource(Resource* resource)
+void Forester::createTool()
 {
-    if (resource == NULL)
+    int w_index = -1;
+    int i_index = -1;
+    for (int i = 0; i < resources.size(); i++)
     {
-        std::cout<<RED<<"-> No resource to collect!"<<std::endl;
-        return false;
-    }
-    if (resources.size() < getCargo())
-    {
-        if (resource->getDurability() <= tools[tools.size()-1].getEfficiency()) {
-                tools[tools.size()-1].Hit();
-                resources.push_back(resource);
-                //Resource* wood = new Wood(*resource);
-                //resources.push_back(wood);
-                std::cout<<GREEN<<"-> "<<getName()<<" collected "<<resource->getName()<<std::endl;
-                return true;
-            } else {
-                resource->setDurability(resource->getDurability() - tools[tools.size()-1].getEfficiency());
-                tools[tools.size()-1].Hit();
-                std::cout<<RESET<<"-> "<<getName()<<" strikes "<<resource->getName()<<std::endl;
-                std::cout<<"   Resource durability: "<<resource->getDurability()<<std::endl;
-                std::cout<<"   Tool efficiency: "<<tools[tools.size()-1].getEfficiency()<<std::endl;
-                return false;
+        if (resources[i]->className() == "Iron")
+        {
+            i_index = i;
+        }
+        if (resources[i]->className() == "Wood")
+        {
+            w_index = i;
         }
     }
-    else
+    if (i_index != -1 && w_index != -1)
     {
-        std::cout<<RED<<"-> Forester "<<getName()<<"'s cargo is full\n   He can't collect more resources!"<<std::endl;
-        return false;
+        Tool* axe = new Axe("Axe", 5, 10);
+        addTool(axe);
+        resources.erase(resources.begin() + i_index);
+        resources.erase(resources.begin() + w_index);
     }
 }
-
-void Forester::addTool(Axe &axe)
-{
-    tools.push_back(axe);
-    std::cout<<YELLOW<<"-> Forester picked up a "<<axe.getName()<<std::endl;
-}
-
-void Forester::removeTool(int index)
-{
-    tools.erase(tools.begin()+index);
-}
-
-void Forester::addNewTool()
-{
-    Axe* axe = new Axe("Axe", 5, 10);
-    tools.push_back(*axe);
-    std::cout<<YELLOW<<"-> "<<getName()<<" created a new "<<axe->getName()<<std::endl;
-}
-
 //Output Methods
-void Forester::printResources()
-{
-    std::cout<<RESET<<"-> Forester "<<getName()<<"'s resources:"<<std::endl;
-    for (unsigned int i = 0; i < resources.size(); i++)
-    {
-        std::cout<<"   Resource nr. "<<i+1<<": "<<resources[i]->getName()<<std::endl;
-    }
-}
-
-void Forester::printTools()
-{
-    std::cout<<RESET<<"-> "<<getName()<<"'s tools:"<<std::endl;
-    for (unsigned int i = 0; i < tools.size(); i++)
-    {
-        std::cout<<"   Tool nr. "<<i+1<<":"<<std::endl;
-        tools[i].printData();
-    }
-}
-
 void Forester::printData()
 {
     std::cout<<RESET<<"-> Forester's data:"<<std::endl;
     std::cout<<"   Name: "<<getName()<<std::endl;
     std::cout<<"   Age: "<<getAge()<<std::endl;
     std::cout<<"   Cargo: "<<getCargo()<<std::endl;
-    std::cout<<"   Nr. of tools: "<<tools.size()<<std::endl;
+    std::cout<<"   Nr. of tools: "<<getToolAmount()<<std::endl;
 }

@@ -63,12 +63,17 @@ Resource* Worker::getResource()
 {
     if (resources.size() > 0)
     {
-        return resources.back();
+        return resources.back().get();
     }
     else
     {
         return NULL;
     }
+}
+
+void Worker::addResource(Resource* resource)
+{
+    resources.push_back(std::unique_ptr<Resource>(resource));
 }
 
 int Worker::getResourceAmount()
@@ -88,35 +93,70 @@ int Worker::getToolAmount() const
 
 void Worker::addTool(Tool* tool)
 {
-    tools.push_back(tool);
+    tools.push_back(std::unique_ptr<Tool>(tool));
 }
 
 //Methods
 void Worker::removeTool(int index)
 {
+    tools[index]->~Tool();
     tools.erase(tools.begin() + index);
 }
 
-void Worker::Hit(Tool *tool)
+bool Worker::Hit(Resource *resource)
 {
-    tool->setHits(tool->getHits() + 1);
-    if (tool->getDurability() <= 0)
+    if (tools.back()->checkBroken())
     {
-        std::cout<<"-> Tool is broken!"<<std::endl;
-        tool->~Tool();
+        std::cout<<RED<<"-> "<<name<<" broke "<<tools.back()->getName()<<"!"<<std::endl;
+        tools.back()->~Tool();
+        tools.pop_back();
+        return false;
     }
-    if (tool->getEfficiency() <= 0)
+    else
     {
-        std::cout<<RED<<"-> Tool is damaged!"<<std::endl;
-        tool->setDurability(tool->getDurability() - 1);
+        std::cout<<RESET<<"-> "<<name<<" hits the "<<resource->getName()<<" with his "<<tools.back()->getName()<<std::endl;
+        return true;
     }
-    if (tool->getHits() > tool->getDurability())
+}
+
+bool Worker::collectResource(Resource* resource)
+{
+    if (resource == NULL)
     {
-        tool->setEfficiency(tool->getEfficiency() - 1);
-        std::cout<<RED<<"-> Efficiency redurced to "<<tool->getEfficiency()<<std::endl;
-        tool->setHits(0);
+        std::cout<<RED<<"-> No resource to collect!"<<std::endl;
+        return false;
+    }
+    if (resources.size() >= getCargo())
+    {
+        std::cout<<RED<<"-> Forester "<<getName()<<"'s cargo is full"<<std::endl;
+        std::cout<<"   He can't collect more resources!"<<std::endl;
+        return false;
+    }
+    if (getToolAmount() == 0)
+    {
+        std::cout<<RED<<"-> Worker "<<getName()<<" has no tools!"<<std::endl;
+        return false;
     }
 
+    if (resource->getDurability() <= tools[tools.size()-1]->getEfficiency()) {
+            if(Hit(resource))
+            {
+                resources.push_back(std::unique_ptr<Resource>(resource));
+                std::cout<<GREEN<<"   "<<getName()<<" collected "<<resource->getName()<<std::endl;
+                return true;
+            }
+    }
+    else 
+    {
+        if (Hit(resource))
+        {
+            resource->setDurability(resource->getDurability() - tools[tools.size()-1]->getEfficiency());
+            std::cout<<RESET<<"   Resource durability: "<<resource->getDurability()<<std::endl;
+            std::cout<<"   Tool efficiency: "<<tools[tools.size()-1]->getEfficiency()<<std::endl;
+            return false;
+        }
+    }
+    
 }
 
 //Output Methods

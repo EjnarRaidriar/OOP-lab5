@@ -3,13 +3,14 @@
 
 #include"../resources/iron/Iron.hpp"
 #include"../resources/wood/Wood.hpp"
+#include"Worker.hpp"
 
 class IronToolUser
 {
 public:
     virtual ~IronToolUser() = default;
-    virtual void createTool(Iron &iron, Wood &wood) = 0;
-    virtual void Sharpen(Iron &iron) = 0;
+    virtual void createTool() = 0;
+    virtual void Sharpen() = 0;
 };
 
 #endif

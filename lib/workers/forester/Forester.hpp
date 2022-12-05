@@ -1,29 +1,21 @@
 #ifndef FORESTER_HPP
 #define FORESTER_HPP
-#include"Worker.h"
-#include"Axe.h"
-#include"Wood.h"
-#include<vector>
-class Forester : public Worker
+#include"../Worker.cpp"
+#include"../axe/Axe.hpp"
+#include"../wood/Wood.hpp"
+#include"../IronToolUser.hpp"
+class Forester : public Worker, public IronToolUser
 {
-private:
-    std::vector<Axe> tools;
-
 public:
     Forester();
     Forester(std::string name, int age, int cargo);
     virtual ~Forester();
-    //Getters
-    int getToolAmount() const;
     //Methods
-    bool collectResource(Resource* resource) override;
-    void addTool(Axe &axe);
-    void addNewTool();
+    virtual void createTool() override;
+    virtual void Sharpen() override; //needs to have iron to work
     void removeTool(int index);
     //Output Methods
-    void printResources() override;
-    void printTools();
-    void printData();
+    virtual void printData() override;
 };
 
 #endif
