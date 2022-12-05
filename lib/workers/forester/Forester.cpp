@@ -12,6 +12,12 @@ Forester::Forester(std::string name, int age, int cargo)
 
 Forester::~Forester() {}
 
+//Getters
+std::string Forester::className() const
+{
+    return "Forester";
+}
+
 //Methods
 void Forester::createTool()
 {

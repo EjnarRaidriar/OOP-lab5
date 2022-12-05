@@ -10,6 +10,8 @@ public:
     Forester();
     Forester(std::string name, int age, int cargo);
     virtual ~Forester();
+    //Getters
+    virtual std::string className() const override;
     //Methods
     virtual void createTool() override;
     virtual void Sharpen(Tool* tool) override; //needs to have iron to work
