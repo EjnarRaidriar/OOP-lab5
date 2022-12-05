@@ -64,12 +64,3 @@ void Forester::Sharpen(Tool* tool)
         resources.erase(resources.begin() + iron);
     }
 }
-//Output Methods
-void Forester::printData()
-{
-    std::cout<<RESET<<"-> Forester's data:"<<std::endl;
-    std::cout<<"   Name: "<<getName()<<std::endl;
-    std::cout<<"   Age: "<<getAge()<<std::endl;
-    std::cout<<"   Cargo: "<<getCargo()<<std::endl;
-    std::cout<<"   Nr. of tools: "<<getToolAmount()<<std::endl;
-}

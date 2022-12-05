@@ -178,3 +178,12 @@ void Worker::printTools() const
         tools[i]->printData();
     }
 }
+
+void Worker::printData() const
+{
+    std::cout<<RESET<<"-> "<<className()<<"'s data:"<<std::endl;
+    std::cout<<"   Name: "<<name<<std::endl;
+    std::cout<<"   Age: "<<age<<std::endl;
+    std::cout<<"   Cargo: "<<cargo<<std::endl;
+    std::cout<<"   Nr. of tools: "<<tools.size()<<std::endl;
+}

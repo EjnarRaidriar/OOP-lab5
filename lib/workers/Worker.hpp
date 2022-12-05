@@ -49,7 +49,7 @@ public:
     void removeTool(int index);
 
     //Output Methods
-    virtual void printData() = 0;
+    void printData() const;
     void printResources() const;
     void printTools() const;
 };

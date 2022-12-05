@@ -62,14 +62,3 @@ void Miner::Sharpen(Tool* tool)
         resources.erase(resources.begin() + iron);
     }
 }
-
-//Output Methods
-void Miner::printData()
-{
-    std::cout<<RESET<<"-> Miner's data:"<<std::endl;
-    std::cout<<"   Job: "<<"Miner"<<std::endl;
-    std::cout<<"   Name: "<<getName()<<std::endl;
-    std::cout<<"   Age: "<<getAge()<<std::endl;
-    std::cout<<"   Cargo: "<<getCargo()<<std::endl;
-    std::cout<<"   Nr. of tools: "<<getToolAmount()<<std::endl;
-}
