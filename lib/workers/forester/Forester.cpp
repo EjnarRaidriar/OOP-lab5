@@ -1,30 +1,4 @@
-#ifndef FORESTER_H
-#define FORESTER_H
-#include"Worker.h"
-#include"Axe.h"
-#include"Wood.h"
-#include<vector>
-class Forester : public Worker
-{
-private:
-    std::vector<Axe> tools;
-
-public:
-    Forester();
-    Forester(std::string name, int age, int cargo);
-    virtual ~Forester();
-    //Getters
-    int getToolAmount() const;
-    //Methods
-    bool collectResource(Resource* resource) override;
-    void addTool(Axe &axe);
-    void addNewTool();
-    void removeTool(int index);
-    //Output Methods
-    void printResources() override;
-    void printTools();
-    void printData();
-};
+#include"Forester.hpp"
 
 Forester::Forester() : Worker()
 {
@@ -123,5 +97,3 @@ void Forester::printData()
     std::cout<<"   Cargo: "<<getCargo()<<std::endl;
     std::cout<<"   Nr. of tools: "<<tools.size()<<std::endl;
 }
-
-#endif

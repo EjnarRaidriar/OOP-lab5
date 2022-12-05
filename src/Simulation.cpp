@@ -24,6 +24,24 @@ int main()
     std::cin>>mines_num;
     std::cout<<"River biom num: ";
     std::cin>>river_num;
+
+    int maxWorkers;
+    if (forester_num > miner_num && forester_num > fisher_num)
+        maxWorkers = forester_num;
+    else if (miner_num > forester_num && miner_num > fisher_num)
+        maxWorkers = miner_num;
+    else
+        maxWorkers = fisher_num;
+
+    int maxBioms;
+    if (forest_num > mines_num && forest_num > river_num)
+        maxBioms = forest_num;
+    else if (mines_num > forest_num && mines_num > river_num)
+        maxBioms = mines_num;
+    else
+        maxBioms = river_num;
+
+    //initialization
     City* city = new City("City", forest_num+miner_num+fisher_num);
     std::vector<Forester*> forester;
     for (int i = 0; i < forest_num; i++)
@@ -67,5 +85,39 @@ int main()
             river[i]->addResource(new Fish("Fish", 10));
         }
     }
+
+    while(true)
+    {
+        //going to work
+        for (int i = 0; i < maxWorkers; i++)
+        {
+            if (forester[i])
+            {
+                if (forester[i]->getToolAmount() == 0 && 
+                    forester[i]->getLocation() == city->getName() &&
+                    city->hasMinerals())
+                {
+                    forester[i]->addTool(city->getMineral());
+                }
+                if (forester[i]->getLocation() == forest.back()->getName()) {continue;}
+                forester[i]->setLocation(forest.back()->getName());
+            }
+            if (miner[i])
+            {
+                if (miner[i]->getLocation() == mine.back()->getName()) {continue;}
+                miner[i]->setLocation(mine.back()->getName());
+            }
+            if (fisher[i])
+            {
+                if (fisher[i]->getLocation() == river.back()->getName()) {continue;}
+                fisher[i]->setLocation(river.back()->getName());
+            }
+        }
+
+        while (true)
+        {
+
+        }
+
     return 0;
 }

@@ -1,50 +1,23 @@
-#ifndef MINER_H
-#define MINER_H
-#include"Worker.h"
-#include"Pickaxe.h"
-#include"Mineral.h"
-#include<vector>
-class Miner : public Worker
-{
-private:
-    std::vector<Pickaxe> tools;
+#include"Fisher.hpp"
 
-public:
-    Miner();
-    Miner(std::string name, int age, int cargo);
-    virtual ~Miner();
-    //Getters
-    int getToolAmount() const;
-    //Methods
-    bool collectResource(Resource* resource) override;
-    void addTool(Pickaxe &pickaxe);
-    void addNewTool();
-    void removeTool(int index);
-    //Output Methods
-    void printResources() override;
-    void printTools();
-    void printData();
-};
-
-Miner::Miner() : Worker()
+Fisher::Fisher() : Worker()
 {
-    setName("Nameless Miner");
+    setName("Nameless Fisher");
 }
 
-Miner::Miner(std::string name, int age, int cargo)
-    : Worker(name, age, cargo)
-{}
+Fisher::Fisher(std::string name, int age, int cargo)
+    : Worker(name, age, cargo) {}
 
-Miner::~Miner()
-{}
+Fisher::~Fisher() {}
 
 //Getters
-int Miner::getToolAmount() const
+int Fisher::getToolAmount() const
 {
     return tools.size();
 }
+
 //Methods
-bool Miner::collectResource(Resource* resource)
+bool Fisher::collectResource(Resource* resource)
 {
     if (resource == NULL)
     {
@@ -56,8 +29,8 @@ bool Miner::collectResource(Resource* resource)
         if (resource->getDurability() <= tools[tools.size()-1].getEfficiency()) {
                 tools[tools.size()-1].Hit();
                 resources.push_back(resource);
-                //Resource* mineral = new Mineral(*resource);
-                //resources.push_back(mineral);
+                //Resource* fish = new Fish(*resource);
+                //resources.push_back(fish);
                 std::cout<<GREEN<<"-> "<<getName()<<" collected "<<resource->getName()<<std::endl;
                 return true;
             } else {
@@ -71,40 +44,39 @@ bool Miner::collectResource(Resource* resource)
     }
     else
     {
-        std::cout<<RED<<"-> Miner "<<getName()<<"'s cargo is full\n   He can't collect more resources!"<<std::endl;
+        std::cout<<RED<<"-> Fisher "<<getName()<<"'s cargo is full\n   He can't collect more resources!"<<std::endl;
         return false;
     }
 }
 
-void Miner::addTool(Pickaxe &pickaxe)
+void Fisher::addTool(Rod &rod)
 {
-    tools.push_back(pickaxe);
-    std::cout<<YELLOW<<"-> Miner picked up a "<<pickaxe.getName()<<std::endl;
+    tools.push_back(rod);
+    std::cout<<YELLOW<<"-> Fisher picked up a "<<rod.getName()<<std::endl;
 }
 
-void Miner::removeTool(int index)
+void Fisher::removeTool(int index)
 {
     tools.erase(tools.begin()+index);
 }
 
-void Miner::addNewTool()
+void Fisher::addNewTool()
 {
-    Pickaxe* pickaxe = new Pickaxe("Pickaxe", 5, 10);
-    tools.push_back(*pickaxe);
-    std::cout<<YELLOW<<"-> "<<getName()<<" created a new "<<pickaxe->getName()<<std::endl;
+    Rod* rod = new Rod("Rod", 3, 10);
+    tools.push_back(*rod);
+    std::cout<<YELLOW<<"-> Fisher created a new "<<rod->getName()<<std::endl;
 }
-
 //Output Methods
-void Miner::printResources()
+void Fisher::printResources()
 {
-    std::cout<<RESET<<"-> Miner "<<getName()<<"'s resources:"<<std::endl;
+    std::cout<<RESET<<"-> Fisher "<<getName()<<"'s resources:"<<std::endl;
     for (unsigned int i = 0; i < resources.size(); i++)
     {
         std::cout<<"   Resource nr. "<<i+1<<": "<<resources[i]->getName()<<std::endl;
     }
 }
 
-void Miner::printTools()
+void Fisher::printTools()
 {
     std::cout<<RESET<<"-> "<<getName()<<"'s tools:"<<std::endl;
     for (unsigned int i = 0; i < tools.size(); i++)
@@ -114,13 +86,11 @@ void Miner::printTools()
     }
 }
 
-void Miner::printData()
+void Fisher::printData()
 {
-    std::cout<<RESET<<"-> Miner's data:"<<std::endl;
+    std::cout<<RESET<<"-> Fisher's data:"<<std::endl;
     std::cout<<"   Name: "<<getName()<<std::endl;
     std::cout<<"   Age: "<<getAge()<<std::endl;
     std::cout<<"   Cargo: "<<getCargo()<<std::endl;
     std::cout<<"   Nr. of tools: "<<tools.size()<<std::endl;
 }
-
-#endif

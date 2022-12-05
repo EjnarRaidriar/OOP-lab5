@@ -1,38 +1,4 @@
-#ifndef TOOL_H
-#define TOOL_H
-
-#include<string>
-#include<iostream>
-#include"colors.h"
-#include"Mineral.h"
-
-class Tool
-{
-private:
-    std::string name;
-    int durability;
-    int efficiency;
-    int hits;
-public:
-    //Construnctors and Destructors
-    Tool();
-    Tool(std::string name, int durability, int efficiency);
-    virtual ~Tool();
-    //Getters and Setters
-    void setName(std::string name);
-    void setDurability(int durability);
-    void setEfficiency(int efficiency);
-    void setHits(int hits);
-    std::string getName();
-    int getDurability();
-    int getEfficiency();
-    int getHits();
-    //Methods
-    virtual void Sharpen(Mineral &mineral) = 0;
-    void Hit();
-    //Output Methods
-    virtual void printData();
-};
+#include"Tool.hpp"
 
 //Construnctor and Destructors
 Tool::Tool()
@@ -40,7 +6,8 @@ Tool::Tool()
     name = "Tool";
     durability = 5;
     efficiency = 10;
-    hits = 0;}
+    hits = 0;
+}
 
 Tool::Tool(std::string name, int durability, int efficiency)
 {
@@ -49,8 +16,7 @@ Tool::Tool(std::string name, int durability, int efficiency)
     this->efficiency = efficiency;
     this->hits = 0;}
 
-Tool::~Tool()
-{}
+Tool::~Tool() {}
 
 //Getters and Setters
 void Tool::setName(std::string name)
@@ -92,25 +58,13 @@ int Tool::getHits()
 {
     return this->hits;
 }
-//Methods
 
-void Tool::Hit()
-{
-    hits++;
-    if (hits > durability) {
-        efficiency--;
-        std::cout<<RED<<"-> Efficiency redurced to "<<efficiency<<std::endl;
-        hits = 0;
-    }
-}
 
 //Output Methods
-void Tool::printData()
+void Tool::printData() const
 {
     std::cout<<RESET<<"   Tool name: "<<name<<std::endl;
     std::cout<<"   Tool durability: "<<durability<<std::endl;
     std::cout<<"   Tool efficiency: "<<efficiency<<std::endl;
     std::cout<<"   Tool's hit number: "<<hits<<std::endl;
 }
-
-#endif

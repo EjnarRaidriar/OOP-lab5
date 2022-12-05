@@ -1,32 +1,78 @@
-# Class hierarchy
+# Refactoring Process
 
-## High-level modules
+1. ## Program Stucture
 
-1. Biom
-2. City
+    - I added structure to program files and decoupled declaration of a class and it's implementation
 
-## Abstract Classes
+    >lib  
+    >lab5  
+ ┣ lib  
+ ┃ ┣ resources  
+ ┃ ┃ ┣ fish  
+ ┃ ┃ ┃ ┣ Fish.cpp  
+ ┃ ┃ ┃ ┗ Fish.hpp  
+ ┃ ┃ ┣ mineral  
+ ┃ ┃ ┃ ┣ Mineral.cpp  
+ ┃ ┃ ┃ ┗ Mineral.hpp  
+ ┃ ┃ ┣ wood  
+ ┃ ┃ ┃ ┣ Wood.cpp  
+ ┃ ┃ ┃ ┗ Wood.hpp  
+ ┃ ┃ ┣ Resource.cpp  
+ ┃ ┃ ┗ Resource.hpp  
+ ┃ ┣ tools  
+ ┃ ┃ ┣ axe  
+ ┃ ┃ ┃ ┣ Axe.cpp  
+ ┃ ┃ ┃ ┗ Axe.hpp  
+ ┃ ┃ ┣ pickaxe  
+ ┃ ┃ ┃ ┣ Pickaxe.cpp  
+ ┃ ┃ ┃ ┗ Pickaxe.hpp  
+ ┃ ┃ ┣ rod  
+ ┃ ┃ ┃ ┣ Rod.cpp  
+ ┃ ┃ ┃ ┗ Rod.hpp  
+ ┃ ┃ ┣ Tool.cpp  
+ ┃ ┃ ┗ Tool.hpp  
+ ┃ ┣ workers  
+ ┃ ┃ ┣ fisher  
+ ┃ ┃ ┃ ┣ Fisher.cpp  
+ ┃ ┃ ┃ ┗ Fisher.hpp  
+ ┃ ┃ ┣ forester  
+ ┃ ┃ ┃ ┣ Forester.cpp  
+ ┃ ┃ ┃ ┗ Forester.hpp  
+ ┃ ┃ ┣ miner  
+ ┃ ┃ ┃ ┣ Miner.cpp  
+ ┃ ┃ ┃ ┗ Miner.hpp  
+ ┃ ┃ ┣ Worker.cpp  
+ ┃ ┃ ┗ Worker.hpp  
+ ┃ ┣ Biom.h  
+ ┃ ┣ City.h  
+ ┃ ┗ colors.h  
+ ┣ src  
+ ┃ ┗ Simulation.cpp  
+ ┣ Makefile  
+ ┗ Readme.md  
+    >
 
-1. Worker
-2. Tool
-3. Resource
+2. ## Resource classes
 
-## Child Classes
+    - Added a function to return class name
 
-### Worker
+    ![f](.photos/class%20name.png)  
+    this function will be implemented in each subclass
 
-1. Forester
-2. Miner
-3. Fisher
+    - Class *Mineral* changed its name to *Iron*
 
-### Tool
+3. ## Tool classes
 
-1. Axe
-2. Pickaxe
-3. Rod
+    - Added a function to return class name
 
-### Resources
+    ![f](.photos/class%20name.png)
 
-1. Wood
-2. Mineral
-3. Fish
+    - Deleted function
+
+    ![a](.photos/Sharpen%20deleted.png)
+
+4. ## Worker classes
+
+    - for the funciton *collectResources()* I added different implementation for each subclass of Worker depending on their specialization and the tool used
+
+    ![fdsa](.photos/Screenshot%202022-12-02%20154535.png)
