@@ -10,7 +10,7 @@ class IronToolUser
 public:
     virtual ~IronToolUser() = default;
     virtual void createTool() = 0;
-    virtual void Sharpen() = 0;
+    virtual void Sharpen(Tool* tool) = 0;
 };
 
 #endif

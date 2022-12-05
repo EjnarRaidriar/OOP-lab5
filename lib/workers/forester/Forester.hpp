@@ -12,7 +12,7 @@ public:
     virtual ~Forester();
     //Methods
     virtual void createTool() override;
-    virtual void Sharpen() override; //needs to have iron to work
+    virtual void Sharpen(Tool* tool) override; //needs to have iron to work
     void removeTool(int index);
     //Output Methods
     virtual void printData() override;

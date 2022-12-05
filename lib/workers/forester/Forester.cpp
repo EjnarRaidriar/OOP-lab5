@@ -35,6 +35,28 @@ void Forester::createTool()
         resources.erase(resources.begin() + i_index);
         resources.erase(resources.begin() + w_index);
     }
+    else if (i_index == -1)
+    {
+        std::cout<<RED<<"-> Not enough iron to create an axe"<<std::endl;
+    }
+    else if (w_index == -1)
+    {
+        std::cout<<RED<<"-> Not enough wood to create an axe"<<std::endl;
+    }
+}
+
+void Forester::Sharpen(Tool* tool)
+{
+    int iron = -1;
+    for (int i = 0; i < resources.size(); i++)
+    if (resources[i]->className() == "Iron")
+        iron = i;
+    if (iron != -1)
+    {
+        std::cout<<GREEN<<"-> "<<getName()<<" sharpened his "<<tool->getName()<<std::endl;
+        tool->setEfficiency(10);
+        resources.erase(resources.begin() + iron);
+    }
 }
 //Output Methods
 void Forester::printData()
