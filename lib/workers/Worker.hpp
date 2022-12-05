@@ -44,7 +44,7 @@ public:
     //Methods
     virtual bool collectResource(Resource* resource) = 0;
     void removeTool(int index);
-    void Hit();
+    void Hit(Tool* tool);
 
     //Output Methods
     void printResources() const;

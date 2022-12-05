@@ -97,25 +97,24 @@ void Worker::removeTool(int index)
     tools.erase(tools.begin() + index);
 }
 
-void Worker::Hit()
+void Worker::Hit(Tool *tool)
 {
-    tools.back()->setHits(tools.back()->getHits() + 1);
-    if (tools.back()->getDurability() <= 0)
+    tool->setHits(tool->getHits() + 1);
+    if (tool->getDurability() <= 0)
     {
         std::cout<<"-> Tool is broken!"<<std::endl;
-        tools.back()->~Tool();
-        tools.pop_back();
+        tool->~Tool();
     }
-    if (tools.back()->getEfficiency() <= 0)
+    if (tool->getEfficiency() <= 0)
     {
         std::cout<<RED<<"-> Tool is damaged!"<<std::endl;
-        tools.back()->setDurability(tools.back()->getDurability() - 1);
+        tool->setDurability(tool->getDurability() - 1);
     }
-    if (tools.back()->getHits() > tools.back()->getDurability())
+    if (tool->getHits() > tool->getDurability())
     {
-        tools.back()->setEfficiency(tools.back()->getEfficiency() - 1);
-        std::cout<<RED<<"-> Efficiency redurced to "<<tools.back()->getEfficiency()<<std::endl;
-        tools.back()->setHits(0);
+        tool->setEfficiency(tool->getEfficiency() - 1);
+        std::cout<<RED<<"-> Efficiency redurced to "<<tool->getEfficiency()<<std::endl;
+        tool->setHits(0);
     }
 
 }
