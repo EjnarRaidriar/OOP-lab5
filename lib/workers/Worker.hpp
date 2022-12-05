@@ -43,6 +43,7 @@ public:
     virtual std::string className() const = 0;
 
     //Methods
+    virtual void createTool() = 0;
     bool Hit(Resource* resource);
     bool collectResource(Resource* resource);
     void removeTool(int index);
