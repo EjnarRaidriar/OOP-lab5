@@ -1,39 +1,4 @@
-#ifndef CITY_H
-#define CITY_H
-
-#include<string>
-#include<vector>
-#include"Resource.h"
-
-class City
-{
-private:
-    std::string name;
-    int maxWorkers;
-public:
-    std::vector<Resource*> warehouse;
-    City();
-    City(std::string name, int maxWorkers);
-    virtual ~City();
-    //Getters
-    std::string getName();
-    int getMaxWorkers();
-    //Setters
-    void setName(std::string name);
-    void setMaxWorkers(int maxWorkers);
-    //Output Methods
-    void printWarehouse();
-    //Methods
-    bool hasMinerals();
-    bool hasMinerals(int num);
-    bool hasFish();
-    bool hasFish(int num);
-    bool hasWood();
-    bool hasWood(int num);
-    Resource* getWood();
-    Resource* getMineral();
-    Resource* getFish();
-};
+#include"City.hpp"
 
 City::City()
 {
@@ -188,7 +153,7 @@ Resource* City::getWood()
     {
         if (warehouse[i]->getName() == "Wood")
         {
-            return warehouse[i];
+            return warehouse[i].get();
         }
     }
     return NULL;
@@ -200,7 +165,7 @@ Resource* City::getMineral()
     {
         if (warehouse[i]->getName() == "Mineral")
         {
-            return warehouse[i];
+            return warehouse[i].get();
         }
     }
     return NULL;
@@ -212,10 +177,8 @@ Resource* City::getFish()
     {
         if (warehouse[i]->getName() == "Fish")
         {
-            return warehouse[i];
+            return warehouse[i].get();
         }
     }
     return NULL;
 }
-
-#endif
