@@ -121,6 +121,7 @@ bool Worker::Hit(Resource *resource)
 
 bool Worker::collectResource(Resource* resource)
 {
+    //Don't stop collecting until you can't do it anymore
     if (resource == NULL)
     {
         std::cout<<RED<<"-> No resource to collect!"<<std::endl;
@@ -153,7 +154,7 @@ bool Worker::collectResource(Resource* resource)
             resource->setDurability(resource->getDurability() - tools[tools.size()-1]->getEfficiency());
             std::cout<<RESET<<"   Resource durability: "<<resource->getDurability()<<std::endl;
             std::cout<<"   Tool efficiency: "<<tools[tools.size()-1]->getEfficiency()<<std::endl;
-            return false;
+            return true;
         }
     }
     
