@@ -32,7 +32,7 @@ private:
     std::vector<std::unique_ptr<Biom>> forests;
     std::vector<std::unique_ptr<Biom>> mines;
     std::vector<std::unique_ptr<Biom>> lakes;
-    std::unique_ptr<City> city;
+    City *city;
 public:
     Config();
     Config(
@@ -43,9 +43,6 @@ public:
         int mines_num,
         int lakes_num);
     virtual ~Config();
-
-    Config(Config&&) = default;
-    Config& operator= (Config&&) = default;
 
     void setForestersNum(int foresters_num);
     void setMinersNum(int miners_num);

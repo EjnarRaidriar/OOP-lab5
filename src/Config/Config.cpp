@@ -163,7 +163,7 @@ void Config::Initialize()
         }
     }
     //initializing city
-    this->city = std::make_unique<City>("City");
+    this->city = new City("City", foresters_num + miners_num + fishers_num);
 }
 
 Config* Config::Get()
@@ -204,5 +204,5 @@ Biom* Config::getLake(int index)
 
 City* Config::getCity()
 {
-    return city.get();
+    return city;
 }
