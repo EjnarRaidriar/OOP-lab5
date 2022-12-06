@@ -26,6 +26,11 @@ Resource* Biom::getResource()
     }
 }
 
+void Biom::addResource(std::unique_ptr<Resource> resource)
+{
+    resources.push_back(std::move(resource));
+}
+
 void Biom::addResource(Resource* resource)
 {
     resources.push_back(std::make_unique<Resource>(resource));

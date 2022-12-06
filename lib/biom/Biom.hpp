@@ -15,6 +15,7 @@ public:
     Biom(std::string name);
     virtual ~Biom();
     Resource* getResource();
+    void addResource(std::unique_ptr<Resource>);
     void addResource(Resource* resource);
     std::string getName();
     void setName(std::string name);
