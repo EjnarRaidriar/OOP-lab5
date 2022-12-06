@@ -46,7 +46,7 @@ void City::printWarehouse()
         {
             resourceCount[0]++;
         }
-        else if (warehouse[i]->getName() == "Mineral")
+        else if (warehouse[i]->getName() == "Iron")
         {
             resourceCount[1]++;
         }
@@ -56,7 +56,7 @@ void City::printWarehouse()
         }
     }
     std::cout<<"      Wood: "<<resourceCount[0]<<std::endl;
-    std::cout<<"   Mineral: "<<resourceCount[1]<<std::endl;
+    std::cout<<"   Iron: "<<resourceCount[1]<<std::endl;
     std::cout<<"      Fish: "<<resourceCount[2]<<std::endl;
 }
 
@@ -89,11 +89,11 @@ bool City::hasWood(int num)
     return false;
 }
 
-bool City::hasMinerals()
+bool City::hasIron()
 {
     for (int i = 0; i < warehouse.size(); i++)
     {
-        if (warehouse[i]->getName() == "Mineral")
+        if (warehouse[i]->getName() == "Iron")
         {
             return true;
         }
@@ -101,12 +101,12 @@ bool City::hasMinerals()
     return false;
 }
 
-bool City::hasMinerals(int num)
+bool City::hasIron(int num)
 {
     int count = 0;
     for (int i = 0; i < warehouse.size(); i++)
     {
-        if (warehouse[i]->getName() == "Mineral")
+        if (warehouse[i]->getName() == "Iron")
         {
             count++;
         }
@@ -159,11 +159,11 @@ Resource* City::getWood()
     return NULL;
 }
 
-Resource* City::getMineral()
+Resource* City::getIron()
 {
     for (int i = 0; i < warehouse.size(); i++)
     {
-        if (warehouse[i]->getName() == "Mineral")
+        if (warehouse[i]->getName() == "Iron")
         {
             return warehouse[i].get();
         }

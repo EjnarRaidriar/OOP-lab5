@@ -24,15 +24,15 @@ public:
     //Output Methods
     void printWarehouse();
     //Checkers
-    bool hasMinerals();
-    bool hasMinerals(int num);
+    bool hasIron();
+    bool hasIron(int num);
     bool hasFish();
     bool hasFish(int num);
     bool hasWood();
     bool hasWood(int num);
     //Methods
     Resource* getWood();
-    Resource* getMineral();
+    Resource* getIron();
     Resource* getFish();
 };
 
