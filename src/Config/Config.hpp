@@ -32,7 +32,7 @@ private:
     std::vector<std::unique_ptr<Biom>> forests;
     std::vector<std::unique_ptr<Biom>> mines;
     std::vector<std::unique_ptr<Biom>> lakes;
-    City *city;
+    std::unique_ptr<City> city;
 public:
     Config();
     Config(
@@ -73,6 +73,7 @@ public:
     Biom* getForest(int index);
     Biom* getMine(int index);
     Biom* getLake(int index);
+    City* getCity();
 };
 
 #endif

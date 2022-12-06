@@ -199,3 +199,8 @@ Biom* Config::getLake(int index)
 {
     return lakes[index].get();
 }
+
+City* Config::getCity()
+{
+    return city.get();
+}
