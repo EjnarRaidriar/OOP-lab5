@@ -88,6 +88,36 @@ int Config::getLakesNum()
     return this->lakes_num;
 }
 
+void Config::deleteForester(int index)
+{
+    this->foresters.erase(this->foresters.begin() + index);
+}
+
+void Config::deleteMiner(int index)
+{
+    this->miners.erase(this->miners.begin() + index);
+}
+
+void Config::deleteFisher(int index)
+{
+    this->fishers.erase(this->fishers.begin() + index);
+}
+
+void Config::deleteForest(int index)
+{
+    this->forests.erase(this->forests.begin() + index);
+}
+
+void Config::deleteMine(int index)
+{
+    this->mines.erase(this->mines.begin() + index);
+}
+
+void Config::deleteLake(int index)
+{
+    this->lakes.erase(this->lakes.begin() + index);
+}
+
 void Config::Initialize()
 {
     //initializing foresters

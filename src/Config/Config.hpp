@@ -56,6 +56,13 @@ public:
     int getMinesNum();
     int getLakesNum();
 
+    void deleteForester(int index);
+    void deleteMiner(int index);
+    void deleteFisher(int index);
+    void deleteForest(int index);
+    void deleteMine(int index);
+    void deleteLake(int index);
+
     void Initialize();
 
     static Config *Get();
