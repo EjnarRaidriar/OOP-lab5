@@ -3,7 +3,7 @@
 int main()
 {
     ConfigBuilder builder;
-    Config& config = builder
+    Config config = builder
         .foresters(10)
         .miners(10)
         .fishers(10)
