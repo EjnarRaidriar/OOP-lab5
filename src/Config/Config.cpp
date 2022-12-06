@@ -1,5 +1,15 @@
 #include"Config.hpp"
 
+Config::Config()
+{
+    this->foresters_num = 1;
+    this->miners_num = 1;
+    this->fishers_num = 1;
+    this->forests_num = 1;
+    this->mines_num = 1;
+    this->lakes_num = 1;
+}
+
 Config::Config(
     int foresters_num,
     int miners_num,

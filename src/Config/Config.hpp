@@ -34,6 +34,7 @@ private:
     std::vector<std::unique_ptr<Biom>> lakes;
     City *city;
 public:
+    Config();
     Config(
         int foresters_num,
         int miners_num,
