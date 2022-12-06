@@ -90,29 +90,47 @@ int Config::getLakesNum()
 
 void Config::Initialize()
 {
+    //initializing foresters
     for (int i = 0; i < this->foresters_num; i++)
     {
         this->foresters.push_back(std::make_unique<Forester>());
     }
+    //initializing miners
     for (int i = 0; i < this->miners_num; i++)
     {
         this->miners.push_back(std::make_unique<Miner>());
     }
+    //initializing fishers
     for (int i = 0; i < this->fishers_num; i++)
     {
         this->fishers.push_back(std::make_unique<Fisher>());
     }
+    //initializing forests
     for (int i = 0; i < this->forests_num; i++)
     {
         this->forests.push_back(std::make_unique<Biom>("Forest"));
+        for (int j = 0; j < 50; j++)
+        {
+            this->forests[i]->addResource(std::make_unique<Wood>());
+        }
     }
+    //initializing mines
     for (int i = 0; i < this->mines_num; i++)
     {
         this->mines.push_back(std::make_unique<Biom>("Mine"));
+        for (int j = 0; j < 50; j++)
+        {
+            this->mines[i]->addResource(std::make_unique<Iron>());
+        }
     }
+    //initializing lakes
     for (int i = 0; i < this->lakes_num; i++)
     {
         this->lakes.push_back(std::make_unique<Biom>("Lake"));
+        for (int j = 0; j < 50; j++)
+        {
+            this->lakes[i]->addResource(std::make_unique<Fish>());
+        }
     }
 }
 
