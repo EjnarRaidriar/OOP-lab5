@@ -162,6 +162,8 @@ void Config::Initialize()
             this->lakes[i]->addResource(std::make_unique<Fish>());
         }
     }
+    //initializing city
+    this->city = std::make_unique<City>("City");
 }
 
 Config* Config::Get()

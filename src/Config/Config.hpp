@@ -43,6 +43,10 @@ public:
         int mines_num,
         int lakes_num);
     virtual ~Config();
+
+    Config(Config&&) = default;
+    Config& operator= (Config&&) = default;
+
     void setForestersNum(int foresters_num);
     void setMinersNum(int miners_num);
     void setFishersNum(int fishers_num);
