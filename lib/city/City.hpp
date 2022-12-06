@@ -10,8 +10,8 @@ class City
 private:
     std::string name;
     int maxWorkers;
-public:
     std::vector<std::unique_ptr<Resource>> warehouse;
+public:
     City();
     City(std::string name, int maxWorkers);
     virtual ~City();
@@ -31,6 +31,7 @@ public:
     bool hasWood();
     bool hasWood(int num);
     //Methods
+    void addRsource(Resource* resource);
     Resource* getWood();
     Resource* getIron();
     Resource* getFish();

@@ -147,6 +147,12 @@ bool City::hasFish(int num)
     return false;
 }
 
+//Methods
+void City::addRsource(Resource* resource)
+{
+    warehouse.push_back(std::unique_ptr<Resource>(resource));
+}
+
 Resource* City::getWood()
 {
     for (int i = 0; i < warehouse.size(); i++)
