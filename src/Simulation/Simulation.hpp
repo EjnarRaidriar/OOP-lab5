@@ -5,9 +5,18 @@
 
 class Simulation
 {
+    Config config;
 public:
-    Simulation(Config& config);
+    Simulation();
+    Simulation(Config &config);
     virtual ~Simulation();
+
+    void CheckBiom();
+    void PrepareForWork();
+    void GoToWork();
+    void Work();
+    void EndWork();
+
     void run();
 };
 
