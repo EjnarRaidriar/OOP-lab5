@@ -116,32 +116,38 @@ void Config::Initialize()
     }
 }
 
-Worker& Config::getForester(int index)
+Config* Config::Get()
 {
-    return *foresters[index];
+    static Config config;
+    return &config;
 }
 
-Worker& Config::getMiner(int index)
+Worker* Config::getForester(int index)
 {
-    return *miners[index + this->foresters_num];
+    return foresters[index].get();
 }
 
-Worker& Config::getFisher(int index)
+Worker* Config::getMiner(int index)
 {
-    return *fishers[index];
+    return miners[index].get();
 }
 
-Biom& Config::getForest(int index)
+Worker* Config::getFisher(int index)
 {
-    return *forests[index];
+    return fishers[index].get();
 }
 
-Biom& Config::getMine(int index)
+Biom* Config::getForest(int index)
 {
-    return *mines[index];
+    return forests[index].get();
 }
 
-Biom& Config::getLake(int index)
+Biom* Config::getMine(int index)
 {
-    return *lakes[index];
+    return mines[index].get();
+}
+
+Biom* Config::getLake(int index)
+{
+    return lakes[index].get();
 }

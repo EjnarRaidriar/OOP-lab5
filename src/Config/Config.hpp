@@ -58,12 +58,14 @@ public:
 
     void Initialize();
 
-    Worker& getForester(int index);
-    Worker& getMiner(int index);
-    Worker& getFisher(int index);
-    Biom& getForest(int index);
-    Biom& getMine(int index);
-    Biom& getLake(int index);
+    static Config *Get();
+
+    Worker* getForester(int index);
+    Worker* getMiner(int index);
+    Worker* getFisher(int index);
+    Biom* getForest(int index);
+    Biom* getMine(int index);
+    Biom* getLake(int index);
 };
 
 #endif
