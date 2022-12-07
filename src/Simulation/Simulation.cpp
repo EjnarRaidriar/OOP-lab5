@@ -200,11 +200,17 @@ void Simulation::Work()
     }
 }
 
-void Simulation::EndWork()
+void Simulation::PlaceResources()
 {
     //placing the resources from worker into city
     for (int i = 0; i < forester_num; i++)
     {
+        //Go home in case forester is not there
+        if (forester(i)->getLocation() != "City")
+        {
+            forester(i)->setLocation("City");
+        }
+        //adding resources to city
         for (int j = 0; j < forester(i)->getResourceAmount(); j++)
         {
             config.getCity()->addRsource(forester(i)->getResource());
@@ -212,6 +218,12 @@ void Simulation::EndWork()
     }
     for (int i = 0; i < miner_num; i++)
     {
+        //Go home in case miner is not there
+        if (miner(i)->getLocation() != "City")
+        {
+            miner(i)->setLocation("City");
+        }
+        //adding resources to city
         for (int j = 0; j < miner(i)->getResourceAmount(); j++)
         {
             config.getCity()->addRsource(miner(i)->getResource());
@@ -219,12 +231,142 @@ void Simulation::EndWork()
     }
     for (int i = 0; i < fisher_num; i++)
     {
+        //Go home in case fisher is not there
+        if (fisher(i)->getLocation() != "City")
+        {
+            fisher(i)->setLocation("City");
+        }
+        //adding resources to city
         for (int j = 0; j < fisher(i)->getResourceAmount(); j++)
         {
             config.getCity()->addRsource(fisher(i)->getResource());
         }
     }
-    //TODO check for tools and add sharpening system
+}
+
+void Simulation::addWorkers()
+{
+    //adding workers if there are enough resources for them
+    if (config.getCity()->getWoodAmount() >= 10 &&
+        config.getCity()->getFishAmount() >= 20)
+    {
+        config.addNewFisher();
+    }
+    if (config.getCity()->getWoodAmount() >= 10 &&
+        config.getCity()->getIronAmount() >= 10 &&
+        config.getCity()->getFishAmount() >= 20)
+    {
+        config.addNewForester();
+    }
+    if (config.getCity()->getWoodAmount() >= 10 &&
+        config.getCity()->getIronAmount() >= 10 &&
+        config.getCity()->getFishAmount() >= 20)
+    {
+        config.addNewMiner();
+    }
+}
+
+void Simulation::CheckWorkers()
+{
+    //checking if workers are too old to work
+    for (int i = 0; i < forester_num; i++)
+    {
+        if (forester(i)->getAge() >= 60)
+        {
+            config.deleteForester(i);
+            config.setForestersNum(forester_num - 1);
+        }
+    }
+    for (int i = 0; i < miner_num; i++)
+    {
+        if (miner(i)->getAge() >= 60)
+        {
+            config.deleteMiner(i);
+            config.setMinersNum(miner_num - 1);
+        }
+    }
+    for (int i = 0; i < fisher_num; i++)
+    {
+        if (fisher(i)->getAge() >= 60)
+        {
+            config.deleteFisher(i);
+            config.setFishersNum(fisher_num - 1);
+        }
+    }
+
+    addWorkers();
+}
+
+void Simulation::CheckTools()
+{
+    //If worker has a tool then we will sharpen it
+    //if he does not then we will create one
+    for (int i = 0; i < forester_num; i++)
+    {
+        if (forester(i)->getToolAmount() > 0)
+        {
+            for (int j = 0; j < forester(i)->getToolAmount(); j++)
+            {
+                forester(i)->addResource(config.getCity()->getIron());
+                ((IronToolUser*)forester(i))->Sharpen(forester(i)->getTool(j));
+            }
+        }
+        else
+        {  
+            forester(i)->addResource(config.getCity()->getWood());
+            forester(i)->createTool();
+        }
+    }
+    for (int i = 0; i < miner_num; i++)
+    {
+        if (miner(i)->getToolAmount() > 0)
+        {
+            for (int j = 0; j < miner(i)->getToolAmount(); j++)
+            {
+                miner(i)->addResource(config.getCity()->getIron());
+                ((IronToolUser*)miner(i))->Sharpen(miner(i)->getTool(j));
+            }
+        }
+        else
+        {  
+            miner(i)->addResource(config.getCity()->getWood());
+            miner(i)->createTool();
+        }
+    }
+    for (int i = 0; i < fisher_num; i++)
+    {
+        if (fisher(i)->getToolAmount() > 0)
+        {
+            //Fisher can't sharpen his tools
+        }
+        else
+        {  
+            fisher(i)->addResource(config.getCity()->getWood());
+            fisher(i)->addResource(config.getCity()->getIron());
+            fisher(i)->createTool();
+        }
+    }
+    //put wood and iron back into city
+    PlaceResources();
+}
+
+void Simulation::EndTurn()
+{
+    //adding 5 years to workers age
+    for (int i = 0; i < forester_num; i++)
+    {
+        forester(i)->setAge(forester(i)->getAge() + 5);
+    }
+    for (int i = 0; i < miner_num; i++)
+    {
+        miner(i)->setAge(miner(i)->getAge() + 5);
+    }
+    for (int i = 0; i < fisher_num; i++)
+    {
+        fisher(i)->setAge(fisher(i)->getAge() + 5);
+    }
+    config.printData();
+    sleep(10);
 }
 
 void Simulation::run()
@@ -237,5 +379,12 @@ void Simulation::run()
         
         Work();
 
+        PlaceResources();
+
+        CheckWorkers();
+
+        CheckTools();
+
+        EndTurn();
     }
 }

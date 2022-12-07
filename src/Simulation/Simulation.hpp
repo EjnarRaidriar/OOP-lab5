@@ -2,9 +2,11 @@
 #define SIMULATION_HPP
 
 #include"../ConfigBuilder/ConfigBuilder.hpp"
+#include<unistd.h>
 
 class Simulation
 {
+private:
     Config config;
 public:
     Simulation();
@@ -15,7 +17,11 @@ public:
     void PrepareForWork();
     void GoToWork();
     void Work();
-    void EndWork();
+    void PlaceResources();
+    void addWorkers();
+    void CheckWorkers();
+    void CheckTools();
+    void EndTurn();
 
     void run();
 };
