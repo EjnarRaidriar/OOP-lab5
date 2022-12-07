@@ -118,6 +118,56 @@ void Config::deleteLake(int index)
     this->lakes.erase(this->lakes.begin() + index);
 }
 
+void Config::addNewForester()
+{
+    this->foresters.push_back(std::make_unique<Forester>());
+}
+
+void Config::addNewMiner()
+{
+    this->miners.push_back(std::make_unique<Miner>());
+}
+
+void Config::addNewFisher()
+{
+    this->fishers.push_back(std::make_unique<Fisher>());
+}
+
+Worker* Config::getForester(int index)
+{
+    return foresters[index].get();
+}
+
+Worker* Config::getMiner(int index)
+{
+    return miners[index].get();
+}
+
+Worker* Config::getFisher(int index)
+{
+    return fishers[index].get();
+}
+
+Biom* Config::getForest(int index)
+{
+    return forests[index].get();
+}
+
+Biom* Config::getMine(int index)
+{
+    return mines[index].get();
+}
+
+Biom* Config::getLake(int index)
+{
+    return lakes[index].get();
+}
+
+City* Config::getCity()
+{
+    return city;
+}
+
 void Config::Initialize()
 {
     //initializing foresters
@@ -170,39 +220,4 @@ Config* Config::Get()
 {
     static Config config;
     return &config;
-}
-
-Worker* Config::getForester(int index)
-{
-    return foresters[index].get();
-}
-
-Worker* Config::getMiner(int index)
-{
-    return miners[index].get();
-}
-
-Worker* Config::getFisher(int index)
-{
-    return fishers[index].get();
-}
-
-Biom* Config::getForest(int index)
-{
-    return forests[index].get();
-}
-
-Biom* Config::getMine(int index)
-{
-    return mines[index].get();
-}
-
-Biom* Config::getLake(int index)
-{
-    return lakes[index].get();
-}
-
-City* Config::getCity()
-{
-    return city;
 }

@@ -64,9 +64,9 @@ public:
     void deleteMine(int index);
     void deleteLake(int index);
 
-    void Initialize();
-
-    static Config *Get();
+    void addNewForester();
+    void addNewMiner();
+    void addNewFisher();
 
     Worker* getForester(int index);
     Worker* getMiner(int index);
@@ -75,6 +75,11 @@ public:
     Biom* getMine(int index);
     Biom* getLake(int index);
     City* getCity();
+
+    void Initialize();
+
+    static Config *Get();
+
 };
 
 #endif
