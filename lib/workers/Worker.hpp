@@ -37,7 +37,7 @@ public:
     void addResource(Resource* resource);
     int getResourceAmount();
     void removeResource();
-    Tool* getTool();
+    Tool* getTool(int index);
     void addTool(Tool* tool);
     int getToolAmount() const;
     virtual std::string className() const = 0;
@@ -47,6 +47,7 @@ public:
     bool Hit(Resource* resource);
     bool collectResource(Resource* resource);
     void removeTool(int index);
+    bool hasTool();
 
     //Output Methods
     void printData() const;

@@ -86,9 +86,9 @@ void Worker::removeResource()
     resources.pop_back();
 }
 
-int Worker::getToolAmount() const
+Tool* Worker::getTool(int index)
 {
-    return tools.size();
+    return tools[index].get();
 }
 
 void Worker::addTool(Tool* tool)
@@ -96,11 +96,28 @@ void Worker::addTool(Tool* tool)
     tools.push_back(std::unique_ptr<Tool>(tool));
 }
 
+int Worker::getToolAmount() const
+{
+    return tools.size();
+}
+
 //Methods
 void Worker::removeTool(int index)
 {
     tools[index]->~Tool();
     tools.erase(tools.begin() + index);
+}
+
+bool Worker::hasTool()
+{
+    if (tools.size() > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool Worker::Hit(Resource *resource)
