@@ -18,6 +18,9 @@ public:
     //Getters
     std::string getName();
     int getMaxWorkers();
+    int getWoodAmount();
+    int getIronAmount();
+    int getFishAmount();
     //Setters
     void setName(std::string name);
     void setMaxWorkers(int maxWorkers);
@@ -25,11 +28,8 @@ public:
     void printWarehouse();
     //Checkers
     bool hasIron();
-    bool hasIron(int num);
     bool hasFish();
-    bool hasFish(int num);
     bool hasWood();
-    bool hasWood(int num);
     //Methods
     void addRsource(Resource* resource);
     Resource* getWood();

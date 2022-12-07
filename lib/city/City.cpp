@@ -16,6 +16,7 @@ City::~City()
 {
 }
 
+//Getters
 std::string City::getName()
 {
     return name;
@@ -24,6 +25,45 @@ std::string City::getName()
 int City::getMaxWorkers()
 {
     return maxWorkers;
+}
+
+int City::getWoodAmount()
+{
+    int count = 0;
+    for (int i = 0; i < warehouse.size(); i++)
+    {
+        if (warehouse[i]->getName() == "Wood")
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+int City::getIronAmount()
+{
+    int count = 0;
+    for (int i = 0; i < warehouse.size(); i++)
+    {
+        if (warehouse[i]->getName() == "Iron")
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+int City::getFishAmount()
+{
+    int count = 0;
+    for (int i = 0; i < warehouse.size(); i++)
+    {
+        if (warehouse[i]->getName() == "Fish")
+        {
+            count++;
+        }
+    }
+    return count;
 }
 
 void City::setName(std::string name)
@@ -72,23 +112,6 @@ bool City::hasWood()
     return false;
 }
 
-bool City::hasWood(int num)
-{
-    int count = 0;
-    for (int i = 0; i < warehouse.size(); i++)
-    {
-        if (warehouse[i]->getName() == "Wood")
-        {
-            count++;
-        }
-    }
-    if (count >= num)
-    {
-        return true;
-    }
-    return false;
-}
-
 bool City::hasIron()
 {
     for (int i = 0; i < warehouse.size(); i++)
@@ -101,23 +124,6 @@ bool City::hasIron()
     return false;
 }
 
-bool City::hasIron(int num)
-{
-    int count = 0;
-    for (int i = 0; i < warehouse.size(); i++)
-    {
-        if (warehouse[i]->getName() == "Iron")
-        {
-            count++;
-        }
-    }
-    if (count >= num)
-    {
-        return true;
-    }
-    return false;
-}
-
 bool City::hasFish()
 {
     for (int i = 0; i < warehouse.size(); i++)
@@ -126,23 +132,6 @@ bool City::hasFish()
         {
             return true;
         }
-    }
-    return false;
-}
-
-bool City::hasFish(int num)
-{
-    int count = 0;
-    for (int i = 0; i < warehouse.size(); i++)
-    {
-        if (warehouse[i]->getName() == "Fish")
-        {
-            count++;
-        }
-    }
-    if (count >= num)
-    {
-        return true;
     }
     return false;
 }
