@@ -1,4 +1,4 @@
-#include"Wood.hpp"
+#include"Wood.h"
 
 Wood::Wood() : Resource("Wood", 100) {}
 

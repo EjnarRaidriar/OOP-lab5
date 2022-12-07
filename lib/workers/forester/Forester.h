@@ -1,8 +1,8 @@
-#ifndef FORESTER_HPP
-#define FORESTER_HPP
-#include"../Worker.hpp"
-#include"../axe/Axe.hpp"
-#include"../IronToolUser.hpp"
+#ifndef FORESTER_H
+#define FORESTER_H
+#include"../Worker.h"
+#include"../../tools/axe/Axe.h"
+#include"../IronToolUser.h"
 class Forester : public Worker, public IronToolUser
 {
 public:

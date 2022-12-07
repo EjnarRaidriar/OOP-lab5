@@ -1,6 +1,6 @@
-#ifndef ROD_HPP
-#define ROD_HPP
-#include"../Tool.hpp"
+#ifndef ROD_H
+#define ROD_H
+#include"../Tool.h"
 class Rod : public Tool
 {
 public:

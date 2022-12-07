@@ -1,4 +1,4 @@
-#include"Fish.hpp"
+#include"Fish.h"
 
 Fish::Fish() : Resource("Fish", 100) {}
 

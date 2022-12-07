@@ -1,7 +1,7 @@
-#ifndef FISHER_HPP
-#define FISHER_HPP
-#include"../Worker.hpp"
-#include"../rod/Rod.hpp"
+#ifndef FISHER_H
+#define FISHER_H
+#include"../Worker.h"
+#include"../../tools/rod/Rod.h"
 class Fisher : public Worker
 {
 private:

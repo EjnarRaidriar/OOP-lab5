@@ -1,4 +1,4 @@
-#include"Biom.hpp"
+#include"Biom.h"
 
 Biom::Biom()
 {

@@ -1,7 +1,7 @@
-#ifndef WOOD_HPP
-#define WOOD_HPP
+#ifndef WOOD_H
+#define WOOD_H
 
-#include"../Resource.hpp"
+#include"../Resource.h"
 
 class Wood : public Resource
 {

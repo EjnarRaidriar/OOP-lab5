@@ -1,4 +1,4 @@
-#include"Miner.hpp"
+#include"Miner.h"
 
 Miner::Miner() : Worker()
 {

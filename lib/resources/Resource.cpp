@@ -1,4 +1,4 @@
-#include"Resource.hpp"
+#include"Resource.h"
 
 Resource::Resource(std::string name, int durability)
 {

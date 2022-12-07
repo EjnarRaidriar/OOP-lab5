@@ -1,8 +1,8 @@
-#ifndef WORKER_HPP
-#define WORKER_HPP
+#ifndef WORKER_H
+#define WORKER_H
 
-#include"../resources/Resource.hpp"
-#include"../tools/Tool.hpp"
+#include"../resources/Resource.h"
+#include"../tools/Tool.h"
 #include<iostream>
 #include<vector>
 #include<memory>

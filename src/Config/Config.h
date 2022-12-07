@@ -1,21 +1,20 @@
-#ifndef CONFIG_HPP
-#define CONFIG_HPP
+#ifndef CONFIG_H
+#define CONFIG_H
 
-#include"../lib/resources/Resource.hpp"
-#include"../lib/resources//fish/Fish.hpp"
-#include"../lib/resources/iron/Iron.hpp"
-#include"../lib/resources/wood/Wood.hpp"
-#include"../lib/tools/Tool.hpp"
-#include"../lib/tools/rod/Rod.hpp"
-#include"../lib/tools/axe/Axe.hpp"
-#include"../lib/tools/pickaxe/Pickaxe.hpp"
-#include"../lib/workers/Worker.hpp"
-#include"../lib/workers/fisher/Fisher.hpp"
-#include"../lib/workers/miner/Miner.hpp"
-#include"../lib/workers/forester/Forester.hpp"
-#include"../lib/biom/Biom.hpp"
-#include"../lib/city/City.hpp"
-#include"../lib/colors.h"
+#include"../../lib/resources/fish/Fish.h"
+#include"../../lib/resources/iron/Iron.h"
+#include"../../lib/resources/wood/Wood.h"
+#include"../../lib/tools/Tool.h"
+#include"../../lib/tools/rod/Rod.h"
+#include"../../lib/tools/axe/Axe.h"
+#include"../../lib/tools/pickaxe/Pickaxe.h"
+#include"../../lib/workers/Worker.h"
+#include"../../lib/workers/fisher/Fisher.h"
+#include"../../lib/workers/miner/Miner.h"
+#include"../../lib/workers/forester/Forester.h"
+#include"../../lib/biom/Biom.h"
+#include"../../lib/city/City.h"
+#include"../../lib/colors.h"
 
 class Config
 {

@@ -1,8 +1,8 @@
-#ifndef MINER_HPP
-#define MINER_HPP
-#include"../workers/Worker.hpp"
-#include"../pickaxe/Pickaxe.hpp"
-#include"../IronToolUser.hpp"
+#ifndef MINER_H
+#define MINER_H
+#include"../Worker.h"
+#include"../../tools/pickaxe/Pickaxe.h"
+#include"../IronToolUser.h"
 class Miner : public Worker, public IronToolUser
 {
 public:

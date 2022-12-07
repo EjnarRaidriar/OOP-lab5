@@ -1,5 +1,5 @@
-#ifndef RESOURCE_HPP
-#define RESOURCE_HPP
+#ifndef RESOURCE_H
+#define RESOURCE_H
 
 #include<iostream>
 #include<string>

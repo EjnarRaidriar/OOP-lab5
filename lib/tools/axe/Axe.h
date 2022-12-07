@@ -1,6 +1,6 @@
-#ifndef AXE_HPP
-#define AXE_HPP
-#include"../Tool.hpp"
+#ifndef AXE_H
+#define AXE_H
+#include"../Tool.h"
 class Axe : public Tool
 {
 public:

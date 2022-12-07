@@ -1,7 +1,7 @@
-#ifndef FISH_HPP
-#define FISH_HPP
+#ifndef FISH_H
+#define FISH_H
 
-#include"../Resource.hpp"
+#include"../Resource.h"
 
 class Fish : public Resource
 {

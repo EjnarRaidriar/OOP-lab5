@@ -1,7 +1,7 @@
-#ifndef IRON_HPP
-#define IRON_HPP
+#ifndef IRON_H
+#define IRON_H
 
-#include"../Resource.hpp"
+#include"../Resource.h"
 
 class Iron : public Resource
 {

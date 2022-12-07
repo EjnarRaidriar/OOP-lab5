@@ -1,7 +1,7 @@
 #ifndef SIMULATION_HPP
 #define SIMULATION_HPP
 
-#include"../ConfigBuilder/ConfigBuilder.hpp"
+#include"../ConfigBuilder/ConfigBuilder.h"
 #include<unistd.h>
 
 class Simulation

@@ -1,4 +1,4 @@
-#include"Pickaxe.hpp"
+#include"Pickaxe.h"
 
 Pickaxe::Pickaxe() : Tool()
 {

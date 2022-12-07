@@ -1,4 +1,4 @@
-#include"Axe.hpp"
+#include"Axe.h"
 
 Axe::Axe() : Tool()
 {

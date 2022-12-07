@@ -1,4 +1,4 @@
-#include"ConfigBuilder.hpp"
+#include"ConfigBuilder.h"
 
 ConfigBuilder::ConfigBuilder() {}
 

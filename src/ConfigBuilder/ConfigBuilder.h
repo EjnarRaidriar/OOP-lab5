@@ -1,7 +1,7 @@
-#ifndef CONFIGURATIONBUILDER_HPP
-#define CONFIGURATIONBUILDER_HPP
+#ifndef CONFIGURATIONBUILDER_H
+#define CONFIGURATIONBUILDER_H
 
-#include"Config.hpp"
+#include"Config.h"
 
 class ConfigBuilder
 {

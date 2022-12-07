@@ -1,6 +1,6 @@
-#ifndef PICKAXE_HPP
-#define PICKAXE_HPP
-#include"../Tool.hpp"
+#ifndef PICKAXE_H
+#define PICKAXE_H
+#include"../Tool.h"
 class Pickaxe : public Tool
 {
 public:

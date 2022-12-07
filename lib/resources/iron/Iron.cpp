@@ -1,4 +1,4 @@
-#include"Iron.hpp"
+#include"Iron.h"
 
 Iron::Iron() : Resource("Iron", 100) {}
 
