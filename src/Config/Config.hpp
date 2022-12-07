@@ -76,6 +76,8 @@ public:
     Biom* getLake(int index);
     City* getCity();
 
+    void printData();
+
     void Initialize();
 
     static Config *Get();

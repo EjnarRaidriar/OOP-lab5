@@ -78,7 +78,7 @@ void City::setMaxWorkers(int maxWorkers)
 
 void City::printWarehouse()
 {
-    std::cout<<RESET<<"Warehouse data:"<<std::endl;
+    std::cout<<RESET<<"\t========Warehouse data========"<<std::endl;
     int resourceCount[3] = {0, 0, 0};
     for (int i = 0; i < warehouse.size(); i++)
     {
@@ -95,9 +95,9 @@ void City::printWarehouse()
             resourceCount[2]++;
         }
     }
-    std::cout<<"      Wood: "<<resourceCount[0]<<std::endl;
-    std::cout<<"   Iron: "<<resourceCount[1]<<std::endl;
-    std::cout<<"      Fish: "<<resourceCount[2]<<std::endl;
+    std::cout<<"\t\tWood: "<<resourceCount[0]<<std::endl;
+    std::cout<<"\t\tIron: "<<resourceCount[1]<<std::endl;
+    std::cout<<"\t\tFish: "<<resourceCount[2]<<std::endl;
 }
 
 bool City::hasWood()

@@ -221,3 +221,17 @@ Config* Config::Get()
     static Config config;
     return &config;
 }
+
+void Config::printData()
+{
+    std::cout<<RESET<<std::endl<<std::endl;
+    std::cout << "\t========Simulation data:========" << std::endl<<std::endl;
+    std::cout << "\t\tForesters: " << this->foresters_num << std::endl;
+    std::cout << "\t\tMiners: " << this->miners_num << std::endl;
+    std::cout << "\t\tFishers: " << this->fishers_num << std::endl;
+    std::cout << "\t\tForests: " << this->forests_num << std::endl;
+    std::cout << "\t\tMines: " << this->mines_num << std::endl;
+    std::cout << "\t\tLakes: " << this->lakes_num << std::endl<<std::endl;
+    city->printWarehouse();
+    std::cout << "\t================================" << std::endl<<std::endl;
+}
