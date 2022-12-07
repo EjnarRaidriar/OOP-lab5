@@ -108,18 +108,6 @@ void Worker::removeTool(int index)
     tools.erase(tools.begin() + index);
 }
 
-bool Worker::hasTool()
-{
-    if (tools.size() > 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
 bool Worker::Hit(Resource *resource)
 {
     if (tools.back()->checkBroken())

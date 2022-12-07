@@ -47,7 +47,6 @@ public:
     bool Hit(Resource* resource);
     bool collectResource(Resource* resource);
     void removeTool(int index);
-    bool hasTool();
 
     //Output Methods
     void printData() const;
