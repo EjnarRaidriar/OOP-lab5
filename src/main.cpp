@@ -1,15 +1,15 @@
-#include"../Simulation/Simulation.cpp"
+#include"../include/Simulation/Simulation.h"
 
 int main()
 {
     ConfigBuilder builder;
     Config config = builder
-        .foresters(10)
-        .miners(10)
-        .fishers(10)
-        .forests(10)
-        .mines(10)
-        .lakes(10)
+        .foresters(1)
+        .miners(1)
+        .fishers(1)
+        .forests(1)
+        .mines(1)
+        .lakes(1)
         .build();
     Simulation simulation(config);
     simulation.run();
