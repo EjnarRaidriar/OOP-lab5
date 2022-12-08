@@ -8,6 +8,7 @@ Config::Config()
     this->forests_num = 1;
     this->mines_num = 1;
     this->lakes_num = 1;
+    Initialize();
 }
 
 Config::Config(
@@ -24,6 +25,7 @@ Config::Config(
     this->forests_num = forests_num;
     this->mines_num = mines_num;
     this->lakes_num = lakes_num;
+    Initialize();
 }
 
 Config::~Config() {}
@@ -246,11 +248,6 @@ void Config::Initialize()
         for (int j = 0; j < 50; j++)
         {
             this->forests[i]->addResource(new Wood());
-            std::cout<<"inserting forest"<<std::endl;
-            if (this->forests[i])
-            {
-                std::cout<<"forester inserted"<<std::endl;
-            }
         }
     }
     //initializing mines

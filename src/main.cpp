@@ -4,12 +4,12 @@ int main()
 {
     ConfigBuilder builder;
     Config config = builder
-        .foresters(1)
-        .miners(1)
-        .fishers(1)
-        .forests(1)
-        .mines(1)
-        .lakes(1)
+        .foresters(5)
+        .miners(5)
+        .fishers(5)
+        .forests(5)
+        .mines(5)
+        .lakes(5)
         .build();
     Simulation simulation(config);
     simulation.run();

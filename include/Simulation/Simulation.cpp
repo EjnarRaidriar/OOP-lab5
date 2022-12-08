@@ -28,7 +28,6 @@ Simulation::Simulation()
 Simulation::Simulation(Config &config)
 {
     this->config = config;
-    config.Initialize();
 }
 
 void Simulation::CheckBiom()
@@ -119,9 +118,9 @@ void Simulation::Work()
                 while(stillWorking)
                 {
                     //if worker can't collect more resources we exit loop
-                    if (!forester(i)->collectResource //attention! if not
-                        (forest( forest_num-1 )->getResource()))
+                    if (!forester(i)->collectResource(forest( forest_num-1 )->getResource()))
                     {
+                        //TODO doesn't reach this place
                         stillWorking = false;
                     }
                 }
@@ -364,7 +363,7 @@ void Simulation::EndTurn()
         fisher(i)->setAge(fisher(i)->getAge() + 5);
     }
     config.printData();
-    sleep(10);
+    sleep(3);
 }
 
 void Simulation::run()
@@ -372,17 +371,18 @@ void Simulation::run()
     while (true)
     {
         CheckBiom();
-        
+        std::cout<<RESET<<"CheckBiom()"<<std::endl;
         GoToWork();
-        
+        std::cout<<"GoToWork()"<<std::endl;
         Work();
-
+        std::cout<<"Work()"<<std::endl;
         PlaceResources();
-
+        std::cout<<"PlaceResources()"<<std::endl;
         CheckWorkers();
-
+        std::cout<<"CheckWorkers()"<<std::endl;
         CheckTools();
-
+        std::cout<<"CheckTools()"<<std::endl;
         EndTurn();
+        std::cout<<"EndTurn()"<<std::endl;
     }
 }

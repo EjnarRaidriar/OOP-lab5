@@ -3,6 +3,8 @@
 Miner::Miner() : Worker()
 {
     setName("Nameless Miner");
+    Tool* pickaxe = new Pickaxe("Pickaxe", 5, 10);
+    addTool(pickaxe);
 }
 
 Miner::Miner(std::string name, int age, int cargo)

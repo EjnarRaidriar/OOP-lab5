@@ -3,6 +3,8 @@
 Fisher::Fisher() : Worker()
 {
     setName("Nameless Fisher");
+    Tool* rod = new Rod("Rod", 5, 10);
+    addTool(rod);
 }
 
 Fisher::Fisher(std::string name, int age, int cargo)
